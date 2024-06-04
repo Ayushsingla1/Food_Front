@@ -1,6 +1,7 @@
 {
   "name": "foodhub",
   "version": "0.1.0",
+  "proxy" : "https://foody-swart.vercel.app",
   "private": true,
   "dependencies": {
     "@reduxjs/toolkit": "^2.2.5",

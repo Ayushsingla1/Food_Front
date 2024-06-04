@@ -7,26 +7,19 @@ const Navbar = ()=>{
     const [logged,setlogged] = useState(false);
     const logged_in = async()=>{
         try{ 
-        // axios.defaults.withCredentials = true;
-         const res = await axios.get('https://foody-swart.vercel.app/api/v1/test');
-         console.log(res)
-         if(res.status===200){
+         const res = await axios.get('/api/v1/test');
+         if(res.success){
              setlogged(true);
          }
          else{
             setlogged(false);
-         }}
-         catch(error){
+         }}catch{
             setlogged(false);
-            console.error(error)
-         }
+        }
      }
- 
      useEffect(()=>{
          logged_in();
      })
- 
-
     return(
         <div className="p-0 m-0 flex flex-col w-[100vw] bg-[#1F1F26] text-white">
             <div className="flex justify-between w-[100vw] h-[70px] items-center sm:flex xs:hidden gap-x-4">

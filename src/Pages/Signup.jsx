@@ -14,14 +14,15 @@ const SignUp =()=>{
 
     const submitHandler = async(event)=>{
         event.preventDefault();
-        await axios.post('https://foody-swart.vercel.app/api/v1/Signin',{data})
-        .then(
-            window.location.replace('/login'),
-            toast.success('Account Created')
+        await axios.post('/api/v1/Signin',{data},
+            {
+                headers: {
+                    'Content-Type': 'application/json'
+                }
+            }
         )
-        .catch(
-        toast.error("Incorrect data")
-        )
+        .then(()=>toast.success("Successfull"),window.location.replace('/logIn'))
+        .catch(()=>toast.error("Invalid Details"))
     }
     return (
         <div>

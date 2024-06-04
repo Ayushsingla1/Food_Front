@@ -10,7 +10,7 @@ const  Cart = () =>{
 
     const logged_in = async()=>{
        try{ 
-        const res = await axios.get('https://foody-swart.vercel.app/api/v1/test');
+        const res = await axios.get('api/v1/test');
         console.log(res);
         if(res.status!==200){
             return window.location.replace('/login');

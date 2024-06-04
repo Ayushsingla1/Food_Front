@@ -16,9 +16,17 @@ const Contact = ()=>{
 
     const submitHandler = async(event)=>{
         event.preventDefault();
-        await axios.post("https://foody-swart.vercel.app/api/v1/contact",{data})
-        .then(toast.success('Message Sent'))
-        .catch(err => console.log(err))
+        const {name,email,message} = data;
+        await axios.post("/api/v1/contact",{
+            name : name, email:email,message:message
+        },
+        {
+            headers : {
+                'Content-Type': 'application/json'
+              }
+        })
+        .then(()=>toast.success('Message Sent'))
+        .catch((err) => console.log(err))
     }
 
     return (
@@ -42,7 +50,7 @@ const Contact = ()=>{
                 <div className="font-semibold text-center">Feel free to drop us a line below!</div>
                 </div>
                 <div>
-                <form className="flex flex-col justify-center gap-12 sm:mr-20 items-end xs:items-center">
+                <form method="POST" className="flex flex-col justify-center gap-12 sm:mr-20 items-end xs:items-center">
                     <input type="text" placeholder="Enter Your name" name = "name" value ={data.name} onChange={dataHandler} className="h-16 w-[60%] bg-[#D9D9D9] rounded-lg text-xl pl-4"></input>
                     <input type="email" placeholder="Enter Your Email" name = "email" value ={data.email} onChange={dataHandler} className="h-16 w-[60%] bg-[#D9D9D9] rounded-lg text-xl pl-4"></input>
                     <input type="text" placeholder="Enter Your message" name = "message" value ={data.message} onChange={dataHandler} className="h-24 w-[60%] bg-[#D9D9D9] rounded-xl text-xl pl-4"></input>

@@ -20,14 +20,21 @@ const Review = ()=>{
 
     const submitHandler = async(event)=>{
         event.preventDefault();
-        const {name,review} = entry;
-        await axios.post('https://foody-swart.vercel.app/api/v1/reviews',{entry})
-        .then(toast.success('Message Sent'))
-        .catch(err => console.log(error))
+        console.log(entry)
+        await axios.post('/api/v1/reviews',
+        JSON.stringify(entry),
+            {
+                headers: {
+                    'Content-Type': 'application/json'
+                }
+            }
+        )
+        .then(()=>toast.success('Message Sent'))
+        .catch(()=>console.log("err"))
     }
 
     async function fetcher(){
-        const res = await axios.get('https://foody-swart.vercel.app/api/v1/review');
+        const res = await axios.get('api/v1/review');
         const response = res.data.data
         setreviews(response.slice(0,6));
     }

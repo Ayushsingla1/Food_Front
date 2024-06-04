@@ -6,7 +6,7 @@ const Cards = ()=>{
 
     async function fetchfood(){
         // axios.defaults.withCredentials = true;
-        const res = await axios.get('https://foody-swart.vercel.app/api/v1/items');
+        const res = await axios.get('api/v1/items');
         const response =  res.data.data;
         setdata(response);
     }
