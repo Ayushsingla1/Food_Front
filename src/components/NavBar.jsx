@@ -7,7 +7,7 @@ const Navbar = ()=>{
     const [logged,setlogged] = useState(false);
     const logged_in = async()=>{
         try{ 
-         const res = await axios.get('/api/v1/test');
+         const res = await axios.get('https://food-back-5pkd.onrender.com/api/v1/test');
          if(res.success){
              setlogged(true);
          }
