@@ -17,7 +17,7 @@ const Contact = ()=>{
     const submitHandler = async(event)=>{
         event.preventDefault();
         const {name,email,message} = data;
-        await axios.post("/api/v1/contact",{
+        await axios.post("https://food-back-5pkd.onrender.com/api/v1/contact",{
             name : name, email:email,message:message
         },
         {
