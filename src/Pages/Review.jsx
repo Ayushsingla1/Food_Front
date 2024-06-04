@@ -21,7 +21,7 @@ const Review = ()=>{
     const submitHandler = async(event)=>{
         event.preventDefault();
         console.log(entry)
-        await axios.post('/api/v1/reviews',
+        await axios.post('https://food-back-5pkd.onrender.com/api/v1/reviews',
         JSON.stringify(entry),
             {
                 headers: {
