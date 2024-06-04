@@ -14,25 +14,14 @@ const SignUp =()=>{
 
     const submitHandler = async(event)=>{
         event.preventDefault();
-        const {name,email,password,cpassword} = data;
-        const res = await fetch('https://foody-swart.vercel.app/api/v1/Signin',{
-            method : "POST",
-            headers : {
-                "Content-Type" : "application/json",
-            },
-            body : JSON.stringify({
-               name,email,password,cpassword
-            })
-        })
-        const response = await res.json();
-        console.log(response);
-        if(response.success){
-            window.location.replace('/login')
+        await axios.post('https://foody-swart.vercel.app/api/v1/login',{data})
+        .then(
+            window.location.replace('/login'),
             toast.success('Account Created')
-        }
-        else{
-            toast.error("Incorrect data")
-        }
+        )
+        .catch(
+        toast.error("Incorrect data")
+        )
     }
     return (
         <div>
