@@ -1,6 +1,7 @@
 import { useState } from "react";
 import { NavLink} from "react-router-dom";
 import toast from "react-hot-toast";
+import axios from "axios";
 
 const Login =()=>{
     const [data,setdata] = useState({name:"",email:"",password : ""});
@@ -15,23 +16,11 @@ const Login =()=>{
     const submitHandler = async(event)=>{
         event.preventDefault();
         const {email,password} = data;
-        const res = await fetch('https://foody-swart.vercel.app/api/v1/login',{
-            method : "POST",
-            headers : {
-                "Content-Type" : "application/json",
-            },
-            body : JSON.stringify({
-               email,password
-            })
-        })
-        const response = await res.json();
-        if(response.success){
-            window.location.replace('/');
-            toast.success("Successfully logged in")
-        }
-        else{
-            toast.error("Incorrect details")
-        }
+        await axios.post('https://foody-swart.vercel.app/api/v1/login',{data})
+        .then(response => window.location.replace('/');
+            toast.success("Successfully logged in"))
+        .catch(toast.error("Incorrect details"))
+
     }
     return (
         <div>
