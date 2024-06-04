@@ -5,7 +5,7 @@ import { IoCallOutline } from "react-icons/io5";
 import { TfiEmail } from "react-icons/tfi";
 import toast from "react-hot-toast";
 import FootBar from "../components/FootBar";
-
+import axios from "axios";
 const Contact = ()=>{
     const [data,setdata] = useState({name : "" , email : "" , message : ""})
 
@@ -16,20 +16,9 @@ const Contact = ()=>{
 
     const submitHandler = async(event)=>{
         event.preventDefault();
-        const {name,email,message} = data;
-        const res = await fetch('/api/v1/contact',{
-            method : "POST",
-            headers : {
-                "Content-Type" : "application/json",
-            },
-            body : JSON.stringify({
-               name,email,message
-            })
-        })
-        if(res.status === 200){
-            toast.success('Message Sent')
-        }
-        console.log(res);
+        await axios.post("https://foody-swart.vercel.app/api/v1/contact",{data})
+        .then(toast.success('Message Sent'))
+        .catch(err => console.log(err))
     }
 
     return (
