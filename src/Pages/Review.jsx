@@ -21,19 +21,9 @@ const Review = ()=>{
     const submitHandler = async(event)=>{
         event.preventDefault();
         const {name,review} = entry;
-        const res = await fetch('https://foody-swart.vercel.app/api/v1/reviews',{
-            method : "POST",
-            headers : {
-                "Content-Type" : "application/json",
-            },
-            body : JSON.stringify({
-               name,review
-            })
-        })
-        if(res.status === 200){
-            toast.success('Message Sent')
-        }
-        console.log(res);
+        await axios.post('https://foody-swart.vercel.app/api/v1/reviews',{entry})
+        .then(toast.success('Message Sent'))
+        .catch(err => console.log(error))
     }
 
     async function fetcher(){
