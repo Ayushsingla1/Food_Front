@@ -26,10 +26,15 @@ const Login =()=>{
             'Content-Type': 'application/json'
         }
         })
-        .then(()=>toast.success("Successfully logged in"),
-            window.location.replace('/')
+        .then((response)=>{
+            if(response.success){toast.success("Successfully logged in"),
+            window.location.replace('/')}
+            else{
+                toast.error("Incorrect details")
+            }
+        }
         )
-        .catch(()=>toast.error("Incorrect details"))
+        .catch((err)=>console.error(err));
     }
     return (
         <div>
