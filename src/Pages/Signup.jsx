@@ -22,9 +22,9 @@ const SignUp =()=>{
             }
         )
         .then((response)=>{
-            if(response){
+            if(response.success){
                 toast.success("Successfull");
-                window.location.replace('/login')
+                window.location.replace('login')
             }
             else{
                 toast.error("Invalid Details")
