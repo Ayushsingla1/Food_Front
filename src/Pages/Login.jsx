@@ -27,8 +27,10 @@ const Login =()=>{
         }
         })
         .then((response)=>{
-            if(response.success){toast.success("Successfully logged in"),
-            window.location.replace('/')}
+            if(response.success){
+            toast.success("Successfully logged in");
+            window.location.replace('/')
+            }
             else{
                 toast.error("Incorrect details")
             }
