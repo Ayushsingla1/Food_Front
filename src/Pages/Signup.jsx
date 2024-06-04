@@ -21,8 +21,17 @@ const SignUp =()=>{
                 }
             }
         )
-        .then(()=>toast.success("Successfull"),window.location.replace('/logIn'))
-        .catch(()=>toast.error("Invalid Details"))
+        .then((response)=>{
+            if(response){
+                toast.success("Successfull");
+                window.location.replace('/login')
+            }
+            else{
+                toast.error("Invalid Details")
+            }
+        }  
+        )
+        .catch((err)=>console.error(err))
     }
     return (
         <div>
