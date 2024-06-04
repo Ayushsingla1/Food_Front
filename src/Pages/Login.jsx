@@ -17,7 +17,7 @@ const Login =()=>{
         event.preventDefault();
         const {email,password} = data;
         await axios.post('https://foody-swart.vercel.app/api/v1/login',{data})
-        .then(response => window.location.replace('/');
+        .then(response => window.location.replace('/'),
             toast.success("Successfully logged in"))
         .catch(toast.error("Incorrect details"))
 
