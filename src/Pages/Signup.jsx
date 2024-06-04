@@ -14,7 +14,7 @@ const SignUp =()=>{
 
     const submitHandler = async(event)=>{
         event.preventDefault();
-        await axios.post('https://foody-swart.vercel.app/api/v1/login',{data})
+        await axios.post('https://foody-swart.vercel.app/api/v1/Signin',{data})
         .then(
             window.location.replace('/login'),
             toast.success('Account Created')
