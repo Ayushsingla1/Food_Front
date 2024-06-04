@@ -7,7 +7,7 @@ const Navbar = ()=>{
     const [logged,setlogged] = useState(false);
     const logged_in = async()=>{
         try{ 
-        axios.defaults.withCredentials = true;
+        // axios.defaults.withCredentials = true;
          const res = await axios.get('https://foody-swart.vercel.app/api/v1/test');
          console.log(res)
          if(res.status===200){
