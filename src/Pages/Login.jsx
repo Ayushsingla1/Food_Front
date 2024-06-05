@@ -16,11 +16,7 @@ const Login =()=>{
     const submitHandler = async(event)=>{
         event.preventDefault();
         const {name,email,password} = data;
-        await axios.post('https://food-back-5pkd.onrender.com/api/v1/loggedin',{
-            name : name,
-            email : email,
-            password : password
-        },
+        await axios.post('https://food-back-5pkd.onrender.com/api/v1/loggedin',JSON.stringify(data),
         {
         headers: {
             'Content-Type': 'application/json'
