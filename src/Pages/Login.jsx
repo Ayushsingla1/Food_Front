@@ -13,27 +13,28 @@ const Login =()=>{
         ))
     }
 
-    const submitHandler = async(event)=>{
-        event.preventDefault();
-        const {name,email,password} = data;
-        await axios.post('https://food-back-5pkd.onrender.com/api/v1/loggedin',JSON.stringify(data),
-        {
-        headers: {
-            'Content-Type': 'application/json'
-        }
-        })
-        .then((response)=>{
-            if(response.success){
+    const submitHandler = async (event) => {
+    event.preventDefault();
+    // const { name, email, password } = data;
+    try {
+        const response = await axios.post('https://food-back-5pkd.onrender.com/api/v1/loggedin', 
+            JSON.stringify(data), {
+                headers: {
+                    'Content-Type': 'application/json'
+                }
+            }
+        );
+        if (response.data.success) {
             toast.success("Successfully logged in");
-            window.location.replace('/')
-            }
-            else{
-                toast.error("Incorrect details")
-            }
+            window.location.replace('/');
+        } else {
+            toast.error("Incorrect details");
         }
-        )
-        .catch((err)=>console.error(err));
+    } catch (err) {
+        console.error(err);
+        toast.error("An error occurred while logging in. Please try again.");
     }
+};
     return (
         <div>
             <div className="flex justify-between">
