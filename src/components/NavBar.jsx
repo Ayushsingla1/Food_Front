@@ -6,14 +6,23 @@ import axios from "axios";
 const Navbar = ()=>{
     const [logged,setlogged] = useState(false);
     const logged_in = async()=>{
+        const token = localStorage.getItem('token');
+        if(!token){
+            setlogged(false);
+            return;
+        }
         try{ 
-         const res = await axios.get('https://food-back-5pkd.onrender.com/api/v1/test');
+         const res = await axios.get('https://food-back-5pkd.onrender.com/api/v1/test',
+                headers: {
+                'Authorization': `Bearer ${token}`
+            });
          if(res.data.success){
              setlogged(true);
          }
          else{
             setlogged(false);
-         }}catch{
+         }}catch(err){
+            console.error(err)
             setlogged(false);
         }
      }
