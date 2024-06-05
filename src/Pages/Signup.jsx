@@ -14,7 +14,7 @@ const SignUp =()=>{
 
     const submitHandler = async(event)=>{
         event.preventDefault();
-        await axios.post('https://food-back-5pkd.onrender.com/api/v1/signedin',{data},
+        await axios.post('https://food-back-5pkd.onrender.com/api/v1/signedin',JSON.stringify(data),
             {
                 headers: {
                     'Content-Type': 'application/json'
