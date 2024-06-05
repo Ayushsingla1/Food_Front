@@ -11,14 +11,12 @@ const  Cart = () =>{
     const logged_in = async()=>{
        try{ 
         const res = await axios.get('https://food-back-5pkd.onrender.com/api/v1/test');
-        console.log(res);
-        if(res.status!==200){
-            return window.location.replace('/login');
+        if(!res.success){
+            return window.location.replace('/');
         }
-    }
-        catch(error){
-            window.location.replace('/login')
-            console.error(error)
+        }
+        catch{
+            window.location.replace('/')
         }
     }
 
