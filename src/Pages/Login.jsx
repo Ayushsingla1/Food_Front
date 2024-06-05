@@ -25,6 +25,7 @@ const Login =()=>{
             }
         );
         if (response.data.success) {
+            localStorage.setItem('token', response.data.token);
             toast.success("Successfully logged in");
             window.location.replace('/');
         } else {
