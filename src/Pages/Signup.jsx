@@ -12,27 +12,27 @@ const SignUp =()=>{
         ))
     }
 
-    const submitHandler = async(event)=>{
-        event.preventDefault();
-        await axios.post('https://food-back-5pkd.onrender.com/api/v1/signedin',JSON.stringify(data),
-            {
-                headers: {
-                    'Content-Type': 'application/json'
-                }
+    const submitHandler = async (event) => {
+    event.preventDefault();
+
+    try {
+        const response = await axios.post('https://food-back-5pkd.onrender.com/api/v1/signedin', JSON.stringify(data), {
+            headers: {
+                'Content-Type': 'application/json'
             }
-        )
-        .then((response)=>{
-            if(response.success){
-                toast.success("Successfull");
-                window.location.replace('login')
-            }
-            else{
-                toast.error("Invalid Details")
-            }
-        }  
-        )
-        .catch((err)=>console.error(err))
+        });
+
+        if (response.data.success) {
+            toast.success("Successful");
+            window.location.replace('/login');
+        } else {
+            toast.error("Invalid Details");
+        }
+    } catch (err) {
+        console.error(err);
+        toast.error("An error occurred while signing in. Please try again.");
     }
+};
     return (
         <div>
             <div className="flex justify-between">
