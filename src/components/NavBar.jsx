@@ -13,9 +13,9 @@ const Navbar = ()=>{
         }
         try{ 
          const res = await axios.get('https://food-back-5pkd.onrender.com/api/v1/test',
-                headers: {
+                                     {headers: {
                 'Authorization': `Bearer ${token}`
-            });
+            }});
          if(res.data.success){
              setlogged(true);
          }
