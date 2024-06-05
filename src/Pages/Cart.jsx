@@ -9,8 +9,18 @@ const  Cart = () =>{
     const [amount,setamount] = useState(0);
 
     const logged_in = async()=>{
+        const token = localStorage.getItem('token');
+        if(!token){
+            return window.location.replace('/');
+        }
        try{ 
-        const res = await axios.get('https://food-back-5pkd.onrender.com/api/v1/test');
+        const res = await axios.get('https://food-back-5pkd.onrender.com/api/v1/test',
+            {
+                headers: {
+                    'Authorization': `Bearer ${token}`
+                }
+            }
+            );
         if(!res.data.success){
             return window.location.replace('/');
         }
